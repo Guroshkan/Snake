@@ -40,6 +40,7 @@ namespace Snake
         {
             int score = 0;
             bool IsAlive = true;
+            this.SpawnNewFood();
             while (IsAlive)
             {
                 //this.GetKeyDown();
@@ -84,7 +85,7 @@ namespace Snake
                     this.IsWin = true;
                     return;
                 }
-
+                
             }
         }
 
@@ -95,8 +96,8 @@ namespace Snake
                 for (int j = 0; j < this._Map.GetSize(); j++)
                 {
                     this._Map.SetCellInField(new Point(i, j), MapObject.Empty);
-                }
             }
+        }
         }
 
         private void ChangeMap(Snake.SnakeSegment segment)
@@ -136,8 +137,8 @@ namespace Snake
         {
             while (ReadKeyThread.IsAlive)
             {
-                switch (Console.ReadKey(true).Key)
-                {
+            switch (Console.ReadKey(true).Key)
+            {
                     case ConsoleKey.D: this._Snake.SetDirection(SnakeOrientation.UP); break;
                     case ConsoleKey.A: this._Snake.SetDirection(SnakeOrientation.DOWN); break;
                     case ConsoleKey.S: this._Snake.SetDirection(SnakeOrientation.RIGHT); break;
@@ -145,7 +146,7 @@ namespace Snake
                 }
             }
             
-        }
+            }
 
         private void CycleMap(Point nextStep)
         {
